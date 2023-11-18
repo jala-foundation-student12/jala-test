@@ -4,7 +4,9 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'windows-bg': "url('./assets/images/windows-bg.jpg')"
+        'windows-bg': "url('./assets/images/windows-bg.jpg')",
+        'edit-icon': "url('./assets/svg/edit.svg')",
+        'delete-icon': "url('./assets/svg/delete.svg')"
       }
     }
   },
