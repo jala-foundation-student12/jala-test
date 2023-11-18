@@ -1,4 +1,11 @@
 import React from 'react'
+import axios from 'axios'
+
+const instance = axios.create({
+  baseURL: 'https://reqres.in/api/',
+  timeout: 1000,
+  headers: { 'Content-Type': 'application/json' }
+})
 
 function Login() {
   const [formData, setFormData] = React.useState({
@@ -9,8 +16,6 @@ function Login() {
   function handleChange(event) {
     const { name, value } = event.target
 
-    console.log(event.target)
-
     setFormData(prevFormData => {
       return {
         ...prevFormData,
@@ -19,7 +24,19 @@ function Login() {
     })
   }
 
-  function login() {}
+  function login() {
+    instance
+      .post('/login', {
+        username: formData.username,
+        password: formData.password
+      })
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-windows-bg">
