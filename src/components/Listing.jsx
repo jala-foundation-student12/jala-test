@@ -2,12 +2,12 @@ import React from 'react'
 import Card from './Card'
 
 function Listing() {
-  const [users, setUsers] = React.useState({})
+  const [users, setUsers] = React.useState([])
 
   React.useEffect(() => {
-    fetch('https://reqres.in//api/users?page=2')
+    fetch('https://reqres.in/api/users?page=2')
       .then(r => r.json())
-      .then(json => setUsers(json))
+      .then(json => setUsers(json.data))
   }, [])
 
   return (
@@ -19,7 +19,7 @@ function Listing() {
         </button>
       </nav>
 
-      {/* <div className="grid grid-cols-2 gap-8 min-w-full">
+      <div className="grid grid-cols-2 gap-8 min-w-full">
         {users.map(user => (
           <Card
             key={user.id}
@@ -29,14 +29,14 @@ function Listing() {
             email={user.email}
           />
         ))}
-      </div> */}
-
-      <div className="grid grid-cols-2 gap-8 min-w-full">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
       </div>
+
+      {/* <div className="grid grid-cols-2 gap-8 min-w-full">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div> */}
     </div>
   )
 }
